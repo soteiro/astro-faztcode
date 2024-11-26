@@ -1,0 +1,30 @@
+---
+import Layout from "../../layouts/Layout.astro";
+const post  = await Astro.glob("./post/*.md")
+
+---
+<img src="/shingodzillaportada.webp" width="300" height="400"/>
+
+<Layout pageTitle="Blog">
+    <h1>Blog</h1>
+    {
+        post.map(post => {
+            return <a class="link" href={post.url}>{post.frontmatter.title}</a>
+        })
+    }
+
+  
+    <style>
+        .link{
+            display: block;
+            background-color: rgb(40,40,40);
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+            padding: 20px;
+            width: 300px;
+            text-decoration: none;
+            color: white;
+            margin: 0.5rem;
+        }
+    </style>
+</Layout>
